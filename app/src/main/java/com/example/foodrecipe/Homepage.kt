@@ -1,5 +1,6 @@
 package com.example.foodrecipe
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -18,7 +19,10 @@ class Homepage : AppCompatActivity() {
         setContentView(binding.root)
 
         setUpRecyclerView()
-
+        binding.searchBar.setOnClickListener {
+            var intent = Intent(this,SearchActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun setUpRecyclerView() {
