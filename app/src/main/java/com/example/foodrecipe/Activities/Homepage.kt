@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
 import com.example.foodrecipe.Adapter.popularAdapter
 import com.example.foodrecipe.AppDatabase
+import com.example.foodrecipe.CategoryActivity
 import com.example.foodrecipe.databinding.ActivityHomepageBinding
 import com.example.foodrecipe.Data_Class.recipe
 
@@ -22,6 +23,38 @@ class Homepage : AppCompatActivity() {
         setUpRecyclerView()
         binding.searchBar.setOnClickListener {
             var intent = Intent(this, SearchActivity::class.java)
+
+            startActivity(intent)
+        }
+
+        binding.mainDish.setOnClickListener {
+            intent = Intent(this,CategoryActivity::class.java)
+
+            intent.putExtra("TITTLE","Main Dish")
+            intent.putExtra("CATEGORY","Dish")
+            startActivity(intent)
+        }
+
+        binding.drinks.setOnClickListener {
+            intent = Intent(this,CategoryActivity::class.java)
+            intent.putExtra("TITTLE","Drinks")
+            intent.putExtra("CATEGORY","Drinks")
+            startActivity(intent)
+        }
+
+        binding.dessart.setOnClickListener {
+            intent = Intent(this,CategoryActivity::class.java)
+
+            intent.putExtra("TITTLE","Dessert")
+            intent.putExtra("CATEGORY","Dessert")
+            startActivity(intent)
+        }
+
+        binding.salad.setOnClickListener {
+            intent = Intent(this,CategoryActivity::class.java)
+            intent.putExtra("TITTLE","Salad")
+            intent.putExtra("CATEGORY","Salad")
+
             startActivity(intent)
         }
     }
