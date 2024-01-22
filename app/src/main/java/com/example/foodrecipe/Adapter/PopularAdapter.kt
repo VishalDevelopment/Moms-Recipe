@@ -1,14 +1,14 @@
-package com.example.foodrecipe
+package com.example.foodrecipe.Adapter
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.foodrecipe.databinding.PopularRvItemBinding
+import com.example.foodrecipe.Data_Class.recipe
 
-class popularAdapter (var datalist:ArrayList<recipe>,var context: Context):RecyclerView.Adapter<popularAdapter.ViewHolder>(){
+class popularAdapter (var datalist:ArrayList<recipe>, var context: Context):RecyclerView.Adapter<popularAdapter.ViewHolder>(){
 
     inner class ViewHolder(var binding:PopularRvItemBinding):RecyclerView.ViewHolder(binding.root)
 
@@ -30,5 +30,10 @@ class popularAdapter (var datalist:ArrayList<recipe>,var context: Context):Recyc
         var time = datalist.get(position).ing.split("\n".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
         holder.binding.timeM.text = time.get(0)
 
+    }
+
+    fun filterList(filterList: ArrayList<recipe>){
+        datalist = filterList
+        notifyDataSetChanged()
     }
 }

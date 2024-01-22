@@ -1,13 +1,14 @@
-package com.example.foodrecipe
+package com.example.foodrecipe.Activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
-import androidx.room.RoomDatabase
+import com.example.foodrecipe.Adapter.popularAdapter
+import com.example.foodrecipe.AppDatabase
 import com.example.foodrecipe.databinding.ActivityHomepageBinding
+import com.example.foodrecipe.Data_Class.recipe
 
 class Homepage : AppCompatActivity() {
     lateinit var binding: ActivityHomepageBinding
@@ -20,7 +21,7 @@ class Homepage : AppCompatActivity() {
 
         setUpRecyclerView()
         binding.searchBar.setOnClickListener {
-            var intent = Intent(this,SearchActivity::class.java)
+            var intent = Intent(this, SearchActivity::class.java)
             startActivity(intent)
         }
     }
@@ -29,7 +30,7 @@ class Homepage : AppCompatActivity() {
         dataList = ArrayList()
 
         binding.rvPopular.layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
-        var db = Room.databaseBuilder(this,AppDatabase::class.java,"db_name")
+        var db = Room.databaseBuilder(this, AppDatabase::class.java,"db_name")
             .allowMainThreadQueries()
             .fallbackToDestructiveMigration()
             .createFromAsset("recipe.db")
