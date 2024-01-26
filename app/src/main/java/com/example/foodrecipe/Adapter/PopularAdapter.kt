@@ -1,12 +1,14 @@
 package com.example.foodrecipe.Adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.foodrecipe.databinding.PopularRvItemBinding
 import com.example.foodrecipe.Data_Class.recipe
+import com.example.foodrecipe.Activities.RecipeActivity
 
 class popularAdapter (var datalist:ArrayList<recipe>, var context: Context):RecyclerView.Adapter<popularAdapter.ViewHolder>(){
 
@@ -28,7 +30,18 @@ class popularAdapter (var datalist:ArrayList<recipe>, var context: Context):Recy
         holder.binding.populartext.text = datalist.get(position).tittle
 
         var time = datalist.get(position).ing.split("\n".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
-        holder.binding.timeM.text = time.get(0)
+        holder.binding.timeM.text = time!!.get(0)
+
+
+        holder.itemView.setOnClickListener{
+            var intent = Intent(context, RecipeActivity::class.java)
+            intent.putExtra("img",datalist[position].img)
+            intent.putExtra("tittle",datalist[position].tittle)
+            intent.putExtra("des",datalist[position].des)
+            intent.putExtra("ing",datalist[position].ing)
+            intent.flags =Intent.FLAG_ACTIVITY_NEW_TASK
+            context.startActivity(intent)
+        }
 
     }
 

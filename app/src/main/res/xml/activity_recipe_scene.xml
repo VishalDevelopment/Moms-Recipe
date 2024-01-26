@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:motion="http://schemas.android.com/tools">
+
+    <Transition
+        motion:constraintSetEnd="@+id/end"
+        motion:constraintSetStart="@+id/start"
+        motion:duration="400"
+    >
+        <OnClick app:targetId="@+id/scroll_up"/>
+    </Transition>
+
+  <ConstraintSet android:id="@+id/end">
+
+      <Constraint
+          android:id="@+id/food_image"
+          motion:layout_constraintEnd_toEndOf ="parent"
+          android:layout_width="match_parent"
+          android:layout_height="100dp"
+          motion:layout_constraintTop_toTopOf ="parent"
+          motion:layout_constarintStart_toStartOf="parent"
+          />
+
+      <Constraint
+          android:id="@+id/relativeLayout"
+          android:layout_height="match_parent"
+          android:layout_width="match_parent"
+          android:layout_marginTop="100dp"
+
+          motion:layout_constraintTop_toTopOf ="parent"
+          motion:layout_constraintStart_toStartOf="parent"
+          motion:layout_constrainEnd_toEndOf = "parent"
+
+          motion:layout_constraintHorizontal_bias="0.0"
+          />
+
+      <Constraint
+          android:id="@+id/blackish_effect"
+          motion:constraintEnd_toEndOf="parent"
+          motion:constraintStart_toStartOf="parent"
+          motion:constraintTop_toTopOf="@+id/food_image"
+          android:alpha="0"
+          android:layout_width="match_parent"
+          android:layout_height="250dp"
+          />
+
+      <Constraint
+          android:id="@+id/btn_back"
+          android:layout_width="45dp"
+          android:layout_height="45dp"
+          motion:layout_constraintTop_toTopOf="parent"
+          motion:layout_constraintStart_toStartOf="parent"
+          android:layout_marginTop="20dp"
+          android:layout_marginStart="20dp"
+          />
+
+      <Constraint
+          android:layout_width="50dp"
+          android:layout_height="50dp"
+          android:src="@drawable/scroll_up"
+
+          motion:layout_constraintEnd_toEndOf="parent"
+          motion:layout_constraintTop_toBottomOf="@id/food_image"
+          android:layout_marginRight="16dp"
+          android:layout_marginTop="22dp"
+          android:id="@+id/scroll_up"
+          android:rotation="180"
+          />
+
+<Constraint
+    android:id="@+id/fullscreen"
+    android:layout_width="45dp"
+    android:layout_height="45dp"
+    android:src="@drawable/full_size_ic"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    android:layout_marginTop="20dp"
+    android:layout_marginEnd="20dp"
+    android:padding="4dp"
+    android:foregroundGravity="center"
+    android:hapticFeedbackEnabled="true"
+    app:tint="@color/white"
+    />
+
+
+
+
+
+
+  </ConstraintSet>
+
+
+</MotionScene>

@@ -1,11 +1,11 @@
-package com.example.foodrecipe
+package com.example.foodrecipe.Activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
 import com.example.foodrecipe.Adapter.CategoryAdapter
-import com.example.foodrecipe.Adapter.popularAdapter
+import com.example.foodrecipe.AppDatabase
 import com.example.foodrecipe.Data_Class.recipe
 import com.example.foodrecipe.databinding.ActivityCategoryBinding
 

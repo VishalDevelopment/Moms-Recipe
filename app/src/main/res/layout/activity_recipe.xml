@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.RecipeActivity">
+<!--    app:layoutDescription="@xml/activity_recipe_scene"-->
+
+
+    <ImageView
+        android:id="@+id/food_image"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:background="#f6f6f6"
+        android:hapticFeedbackEnabled="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/pizza_sample"
+        app:layout_constraintEnd_toEndOf="@+id/relativeLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        />
+    <ImageView
+        android:id="@+id/blackish_effect"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:src="@drawable/image_btm_overlay"
+        app:layout_constraintTop_toTopOf="@id/food_image"
+        app:layout_constraintStart_toStartOf="@id/food_image"
+        app:layout_constraintEnd_toEndOf="@id/food_image"/>
+
+    <ImageView
+        android:id="@+id/btn_back"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:src="@drawable/back_icon"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:hapticFeedbackEnabled="true"
+      android:clickable="true"
+        android:padding="4dp"
+        android:foregroundGravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/card_back_btn"/>
+
+    <ImageView
+        android:id="@+id/fullscreen"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:src="@drawable/full_size_ic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:padding="4dp"
+        android:foregroundGravity="center"
+        android:hapticFeedbackEnabled="true"
+        app:tint="@color/white" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+android:background="@drawable/card_back_btn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/food_image"
+        android:layout_marginTop="-10dp">
+        <TextView
+            android:id="@+id/tittle"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:text="Olive Garden Salad Dressing"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:fontFamily="@font/poppins"
+            android:textColor="@color/black"
+            android:layout_marginTop="22dp"
+            android:layout_marginStart="20dp"
+
+            />
+
+        <ImageView
+            android:id="@+id/clock_icon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/clock_icon"
+
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="20dp"
+            android:layout_below="@id/tittle"
+            app:tint = "#019267"
+            />
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+
+            android:text="10m"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="3dp"
+            android:gravity="center_vertical"
+
+            android:layout_toEndOf="@id/clock_icon"
+            android:layout_below="@id/tittle"
+
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/ingredients"
+            android:layout_width="150dp"
+            android:layout_height="42dp"
+            android:text="ingredients"
+
+            android:layout_alignParentStart="true"
+            android:layout_below="@id/tittle"
+            android:layout_marginTop="40dp"
+            android:layout_marginStart="34dp"
+            android:background="@drawable/btn_ing"
+            android:textColor="@color/white" />
+
+        <ScrollView
+            android:id="@+id/ing_scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ingredients"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:padding="10dp"
+            >
+
+            <TextView
+                android:id="@+id/ing_data"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:lineSpacingExtra="10dp"
+                android:textColor="@color/black"
+                android:text=""
+                android:textSize="12sp"
+                />
+
+
+        </ScrollView>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/steps"
+            android:layout_width="150dp"
+            android:layout_height="42dp"
+            android:layout_below="@id/tittle"
+
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="227dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="34dp"
+            android:background="@drawable/btn_ing"
+            android:text="steps"
+
+            android:textColor="@color/white" />
+        <ScrollView
+            android:id="@+id/steps_scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ingredients"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:padding="10dp"
+            android:visibility="gone"
+            >
+
+            <TextView
+                android:id="@+id/steps_data"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:lineSpacingExtra="10dp"
+                android:textColor="@color/black"
+                android:text=""
+                android:textSize="12sp"
+                />
+
+
+        </ScrollView>
+
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/scroll_up"
+
+        app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintTop_toBottomOf="@id/food_image"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="22dp"
+        android:id="@+id/scroll_up" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout >
