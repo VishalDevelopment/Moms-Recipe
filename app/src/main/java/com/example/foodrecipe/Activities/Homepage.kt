@@ -1,14 +1,25 @@
 package com.example.foodrecipe.Activities
 
+import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Gravity
+import android.view.ViewGroup
+import android.view.Window
+import android.widget.Button
+import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
 import com.example.foodrecipe.Adapter.popularAdapter
 import com.example.foodrecipe.AppDatabase
 import com.example.foodrecipe.databinding.ActivityHomepageBinding
 import com.example.foodrecipe.Data_Class.recipe
+import com.example.foodrecipe.R
 
 class Homepage : AppCompatActivity() {
     lateinit var binding: ActivityHomepageBinding
@@ -19,6 +30,29 @@ class Homepage : AppCompatActivity() {
         binding = ActivityHomepageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.menuHome.setOnClickListener {
+            var dialog = Dialog(this)
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+            dialog.setContentView(R.layout.bottom_sheet)
+
+            dialog.show()
+            dialog.window!!.setLayout(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+            dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            dialog.window!!.setGravity(Gravity.BOTTOM)
+
+            var privacy = dialog.findViewById<LinearLayout>(R.id.topLayout)
+            var dev = dialog.findViewById<LinearLayout>(R.id.BottomLayout)
+
+            dev.setOnClickListener{
+                var intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/vishalgoswami7714/"))
+                startActivity(intent)
+            }
+
+            
+        }
         setUpRecyclerView()
         binding.searchBar.setOnClickListener {
             var intent = Intent(this, SearchActivity::class.java)

@@ -36,11 +36,6 @@ class SearchAdapter(var context: Context, var dataList: ArrayList<recipe>)
         holder.txt.text = dataList.get(position).tittle
 
 
-        holder.itemView.setOnClickListener{
-            var intent = Intent(context,RecipeActivity::class.java)
-            context.startActivity(intent)
-        }
-
 
     }
 

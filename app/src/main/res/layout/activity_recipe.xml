@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.RecipeActivity">
-<!--    app:layoutDescription="@xml/activity_recipe_scene"-->
+    tools:context=".Activities.RecipeActivity"
+  >
+
 
 
     <ImageView
@@ -194,11 +195,11 @@ android:background="@drawable/card_back_btn"
         android:layout_height="50dp"
         android:src="@drawable/scroll_up"
 
-        app:layout_constraintEnd_toEndOf="parent"
-app:layout_constraintTop_toBottomOf="@id/food_image"
+        app:layout_constraintEnd_toEndOf="@+id/relativeLayout"
+   app:layout_constraintTop_toTopOf="@id/relativeLayout"
         android:layout_marginRight="16dp"
         android:layout_marginTop="22dp"
         android:id="@+id/scroll_up" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout >
+</androidx.constraintlayout.widget.ConstraintLayout>
