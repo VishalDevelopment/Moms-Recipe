@@ -14,35 +14,42 @@ import com.example.foodrecipe.Activities.RecipeActivity
 import com.example.foodrecipe.R
 import com.example.foodrecipe.Data_Class.recipe
 
-class SearchAdapter(var context: Context, var dataList: ArrayList<recipe>)
-    :RecyclerView.Adapter<SearchAdapter.ViewHolder>(){
-    inner class ViewHolder(var itemView: View):RecyclerView.ViewHolder(itemView) {
+class SearchAdapter(
+    var context: Context,
+    var dataList: ArrayList<recipe>,
+    private val onItemClick: (recipe) -> Unit // Lambda for click handling
+) : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
+
+    inner class ViewHolder(var itemView: View) : RecyclerView.ViewHolder(itemView) {
         var img = itemView.findViewById<ImageView>(R.id.search_image)
         var txt = itemView.findViewById<TextView>(R.id.search_text)
 
+        init {
+            itemView.setOnClickListener {
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    onItemClick(dataList[position])
+                }
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        var itemView = LayoutInflater.from(parent.context).inflate(R.layout.search_rv_layout,parent,false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.search_rv_layout, parent, false)
         return ViewHolder(itemView)
     }
 
     override fun getItemCount(): Int {
-       return dataList.size
+        return dataList.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        Glide.with(context).load(dataList.get(position).img).into(holder.img)
-        holder.txt.text = dataList.get(position).tittle
-
-
-
+        Glide.with(context).load(dataList[position].img).into(holder.img)
+        holder.txt.text = dataList[position].tittle
     }
 
-    //Required to work on filter
-    fun filterList(filterList: ArrayList<recipe>){
-        dataList= filterList
+    fun filterList(filterList: ArrayList<recipe>) {
+        dataList = filterList
         notifyDataSetChanged()
     }
-
 }

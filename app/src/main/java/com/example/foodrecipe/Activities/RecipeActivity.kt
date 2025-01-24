@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
+import android.widget.RelativeLayout
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.example.foodrecipe.R
@@ -19,7 +20,7 @@ class RecipeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityRecipeBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        ScrollUpButton()
         Glide.with(this).load(intent.getStringExtra("img")).into(binding.foodImage)
         binding.tittle.text = intent.getStringExtra("tittle")
 //        binding.ingData.text = intent.getStringExtra("ing")
@@ -83,5 +84,29 @@ class RecipeActivity : AppCompatActivity() {
             finish()
         }
 
+    }
+
+    private fun ScrollUpButton() {
+        var isExpanded = false
+
+        val relativeLayout = findViewById<RelativeLayout>(R.id.relativeLayout)
+        val scrollUpButton = findViewById<ImageView>(R.id.scroll_up)
+        scrollUpButton.setOnClickListener {
+            val density = resources.displayMetrics.density
+            val layoutParams = relativeLayout.layoutParams
+
+            if (!isExpanded) {
+                val newHeightInDp = 700
+                layoutParams.height = (newHeightInDp * density).toInt()
+                isExpanded = true
+                scrollUpButton.setImageResource(R.drawable.baseline_keyboard_arrow_down_24)
+            } else {
+                layoutParams.height = RelativeLayout.LayoutParams.WRAP_CONTENT
+                isExpanded = false
+
+                scrollUpButton.setImageResource(R.drawable.scroll_up)
+            }
+            relativeLayout.layoutParams = layoutParams
+        }
     }
 }
